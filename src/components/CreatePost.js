@@ -5,11 +5,11 @@ function CreatePost({ user }){
     const { dispatch } = React.useContext(PostContext);
     const [content, setContent] = React.useState('');
     const [image, setImage] = React.useState('');
-    const imageInputRef = React.useRef();
+    const imageInputRef = React.useRef(null);
 
     function handlePostSubmit(event){
         event.preventDefault();
-        const post = {content, image, user};
+        const post = {content, image, user, id: Date.now()};
         dispatch({ type: "ADD_POST", payload: { post } });
         setContent("");
         imageInputRef.current.value = "";
